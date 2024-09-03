@@ -2,7 +2,6 @@ import { Inter } from "next/font/google";
 import background from "../public/assets/images/background.jpg";
 import Image from "next/image";
 import { Roboto } from "next/font/google";
-import globals from "../styles/globals.css";
 
 import { signIn, auth } from "./api/auth/auth";
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +18,7 @@ export default async function Home() {
           className="w-full h-full object-cover"
           width={0}
           height={0}
-          alt="test"
+          alt="background"
         />
         {/* <img className="w-full h-full object-cover" src={profilePic}></img> */}
 

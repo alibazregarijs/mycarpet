@@ -20,6 +20,8 @@ module.exports = {
       },
       colors: {
         myRed: "#A91D3A",
+        myWhite: "#EEEEEE",
+        myBlack: "#151515",
       },
     },
   },
