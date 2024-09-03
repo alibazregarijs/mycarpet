@@ -18,6 +18,9 @@ module.exports = {
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
         blackOverlayBackground: "rgba(0, 0 ,0 ,0.3)",
       },
+      colors: {
+        myRed: "#A91D3A",
+      },
     },
   },
   plugins: [],
