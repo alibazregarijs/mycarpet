@@ -16,11 +16,12 @@ module.exports = {
         mainColor: "#FBF8F9",
         secondaryColor: "#F0F0F0",
         blackOverlay: "rgba(0, 0 ,0 ,0.7)",
-        blackOverlaySection: "rgba(0, 0 ,0 ,0.5)",
+        blackOverlaySection: "rgba(0, 0 ,0 ,0.6)",
         blackOverlayBackground: "rgba(0, 0 ,0 ,0.3)",
       },
       colors: {
         myRed: "#A91D3A",
+        mySecondRed:"#C73659",
         myWhite: "#EEEEEE",
         myBlack: "#151515",
       },
