@@ -12,18 +12,18 @@ const Sidebar = () => {
   const [dropMenu, setDropMenu] = useState({ name: "", situation: false });
   return (
     <div>
-      <div className="flex justify-between items-center mx-2">
+      <div className="flex  justify-between items-center mx-2">
         <div>
           <h2 className=" text-white font-sans font-extrabold">Mycarpet</h2>
         </div>
 
-        <div>
+        <div className="flex ">
           <Image
             src={logo}
-            width={110}
-            height={110}
+            width={80}
+            height={80}
             alt="logo"
-            className="bg-myBlack "
+            className="bg-myBlack content-start "
           />
         </div>
       </div>

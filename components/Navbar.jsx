@@ -8,8 +8,8 @@ import profile from "../public/assets/images/profile.jpg";
 const Navbar = () => {
   const [notif, setNotif] = useState(true);
   return (
-    <div className="flex justify-between  mt-7 mx-2">
-      <div className="flex space-x-1">
+    <div className="flex justify-between  mt-1 mx-2 ">
+      <div className="flex space-x-1 mx-4 mt-3 border-b border-b-gray-300">
         <p className="font-bold text-myBlack">
           Today,{new Date().toLocaleString("en-US", { day: "2-digit" })}
         </p>
