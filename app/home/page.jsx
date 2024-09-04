@@ -8,7 +8,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const Home = () => {
-  const [dropMenu, setDropMenu] = useState(false);
+  const [dropMenu, setDropMenu] = useState({ name: "", situation: false });
   return (
     <div className="grid grid-cols-12 grid-rows-12 ">
       <div className="col-span-2 row-span-12  h-screen  bg-myBlack ">
@@ -71,26 +71,40 @@ const Home = () => {
 
         <div className="flex justify-between m-2 mt-5 ">
           <h2 className=" text-sm  text-myWhite font-bold">Updates</h2>
-          {dropMenu ? (
+          {dropMenu.situation && dropMenu.name === "update" ? (
             <ChevronDownIcon
               aria-hidden="true"
-              className="-mr-1 h-5 w-5 text-gray-400"
-              onClick={() => setDropMenu(false)}
+              className="-mr-1 h-5 w-5 text-gray-400 cursor-pointer"
+              onClick={() =>
+                setDropMenu({ ...dropMenu, name: "", situation: false })
+              }
             />
           ) : (
             <ChevronUpIcon
               aria-hidden="true"
-              className="-mr-1 h-5 w-5 text-gray-400"
-              onClick={() => setDropMenu(true)}
+              className="-mr-1 h-5 w-5 text-gray-400 cursor-pointer"
+              onClick={() =>
+                setDropMenu({ ...dropMenu, name: "update", situation: true })
+              }
             />
           )}
         </div>
-        {dropMenu && (
+        {dropMenu.name === "update" && (
           <div className="flex mx-5 animate-slide-in">
             <ul className="space-y-3 mt-2">
-              <li className="text-myWhite opacity-50">Coffee</li>
-              <li className="text-myWhite opacity-50">Tea</li>
-              <li className="text-myWhite opacity-50">Milk</li>
+              <Link href={"#"} to={""} className="">
+                <li className="text-myWhite opacity-50 cursor-pointer">
+                  Coffee
+                </li>
+              </Link>
+              <Link href={"#"} to={""} className="border">
+                <li className="text-myWhite opacity-50 cursor-pointer">Tea</li>
+              </Link>
+              <Link href={"#"} to={""} className="border">
+                <li className="text-myWhite opacity-50 cursor-pointer">
+                  Carpet
+                </li>
+              </Link>
             </ul>
           </div>
         )}
