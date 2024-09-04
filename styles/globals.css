@@ -4,6 +4,16 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&display=swap");
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .myFont {
   font-family: sans-serif;
   font-weight: 400;
