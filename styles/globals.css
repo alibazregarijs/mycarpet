@@ -8,6 +8,11 @@
   display: none;
 }
 
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
+}
+
+
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */

@@ -7,6 +7,7 @@ import em1 from "../../public/assets/images/em1.jpg";
 import em2 from "../../public/assets/images/em2.jpg";
 import em3 from "../../public/assets/images/em3.jpg";
 import Image from "next/image";
+import Slider from "@/components/Slider";
 
 const Home = () => {
   return (
@@ -93,6 +94,20 @@ const Home = () => {
               </button>
             </div>
           </div>
+        </div>
+        <div className="grid grid-cols-12 mt-10 mx-5 ">
+          <div className="col-span-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-md  text-myBlack font-bold">
+                Recent Carpets
+              </h2>
+              <p className="opacity-50 cursor-pointer text-sm">View All</p>
+            </div>
+            <div className="flex justify-between items-center mt-5">
+              <Slider />
+            </div>
+          </div>
+          <div className="col-span-6"></div>
         </div>
       </div>
     </div>
