@@ -44,7 +44,7 @@ const Slider = () => {
       {slides.map((slide) => (
         <SwiperSlide key={slide.img}>
           <Image
-            className="h-60"
+            className="h-60 cursor-pointer"
             src={slide.img}
             width={0}
             height={0}
