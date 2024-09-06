@@ -21,15 +21,34 @@ module.exports = {
       },
       colors: {
         myRed: "#A91D3A",
-        mySecondRed:"#C73659",
+        mySecondRed: "#C73659",
         myWhite: "#EEEEEE",
         myBlack: "#151515",
       },
       keyframes: {
+        "slide-in-down": {
+          "0%": {
+            visibility: "visible",
+            transform: "translate3d(0, -100%, 0)",
+          },
+          "100%": {
+            transform: "translate3d(0, 0, 0)",
+          },
+        },
         "slide-in": {
           "0%": {
             "-webkit-transform": "translateX(-200px)",
             transform: "translateX(-200px)",
+          },
+          "100%": {
+            "-webkit-transform": "translateX(0px)",
+            transform: "translateX(0px)",
+          },
+        },
+        "slide-down": {
+          "0%": {
+            "-webkit-transform": "translateY(-200px)",
+            transform: "translateY(-200px)",
           },
           "100%": {
             "-webkit-transform": "translateX(0px)",
@@ -50,6 +69,7 @@ module.exports = {
       },
       animation: {
         "slide-in": "slide-in 0.5s ease-out",
+        "slide-down": "slide-down 0.5s ease-out",
         "slide-fwd":
           " slide-fwd 0.45s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
       },
