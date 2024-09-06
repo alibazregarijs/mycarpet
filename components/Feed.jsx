@@ -92,7 +92,7 @@ const Feed = () => {
             <h2 className="text-md  text-myBlack font-bold">Recent Carpets</h2>
             <p className="opacity-50 cursor-pointer text-sm">View All</p>
           </div>
-          <div className="flex justify-between items-center mt-5">
+          <div className="flex justify-between py-3 items-center mt-2">
             <Slider />
           </div>
         </div>
