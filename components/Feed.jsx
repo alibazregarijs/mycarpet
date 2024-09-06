@@ -9,7 +9,7 @@ import Card from "./Card";
 const Feed = () => {
   return (
     <div>
-      <div className="flex justify-between mx-5 mt-4">
+      <div className="flex justify-between mx-5 mt-3">
         <div className="flex space-x-5 justify-center">
           <p className="font-sans border-l-4 border-myRed"></p>
           <div className="flex flex-col justify-center">

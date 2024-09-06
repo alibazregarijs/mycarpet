@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Provider>
-        <body className="h-screen overflow-y-hidden hide-scrollbar">{children}</body>
+        <body className="">{children}</body>
       </Provider>
     </html>
   );
