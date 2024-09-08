@@ -17,7 +17,6 @@ const Home = () => {
     <AppContext.Provider value={{ navToggleContext, setNavToggleContext }}>
       <div className="h-screen overflow-y-scroll  hide-scrollbar">
         <div className="lg:grid grid-cols-12 grid-rows-12 ">
-          {console.log(navToggleContext)}
           {navToggleContext ? (
             <div className={toggleAnimataion}>
               <Sidebar />

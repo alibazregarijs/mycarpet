@@ -24,7 +24,7 @@ export default async function Home() {
 
         <div className="absolute flex space-y-5 flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
           <h1
-            className={`myFont text-white  shadow-xl font-body md:text-7xl text-2xl ${roboto.className}`}
+            className={` text-white  shadow-xl font-bold md:text-7xl  text-4xl `}
           >
             Welcome To Mycarpet
           </h1>
