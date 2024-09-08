@@ -9,7 +9,7 @@ import Card from "./Card";
 const Feed = () => {
   return (
     <div>
-      <div className="flex justify-between mx-5 mt-3">
+      <div className="  flex justify-between items-center mx-5 mt-3">
         <div className="flex space-x-5 justify-center">
           <p className="font-sans border-l-4 border-myRed"></p>
           <div className="flex flex-col justify-center">
@@ -35,8 +35,8 @@ const Feed = () => {
             <h3 className="font-bold font-mono  text-myBlack ">10</h3>
           </div>
         </div>
-        <div className="flex justify-center items-center  ">
-          <div className="flex justify-center items-center relative w-52">
+        <div className="lg:flex flex-col  justify-center items-center  ">
+          <div className="flex justify-center items-center lg:right-0 right-8  relative w-52">
             <Image
               className=" rounded-full h-12 w-12 absolute right-25 z-30 "
               src={em1}
@@ -59,13 +59,13 @@ const Feed = () => {
               alt="employee"
             />
           </div>
-          <div className="flex justify-center items-center border-l-2 mx-3 p-5 border-myRed ">
+          <div className="flex justify-center items-center border-l-2 mx-3 p-3  ">
             <p></p>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center lg:mr-0 mr-4 items-center">
             <button
               type="submit"
-              class="flex  text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2"
+              class="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

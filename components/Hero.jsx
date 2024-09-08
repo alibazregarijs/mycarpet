@@ -16,7 +16,7 @@ const Hero = () => {
         Clean Your Carpet
       </h1>
       <p className="absolute z-10 left-10 bottom-15 text-white font-sans">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
+        Lorem ipsum dolor sit amet consectetur adipisicing 
         tempora.
       </p>
       <button
