@@ -86,7 +86,7 @@ const Feed = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 mt-10 space-x-5 mx-5 ">
+      <div className="md:grid grid-cols-12 mt-10 md:space-x-5 mx-5 ">
         <div className="col-span-6">
           <div className="flex justify-between items-center">
             <h2 className="text-md  text-myBlack font-bold">Recent Carpets</h2>
