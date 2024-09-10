@@ -21,7 +21,7 @@ const Hero = () => {
       </p>
       <button
         type="submit"
-        class="z-10 left-10 bottom-5 text-myBlack absolute  bg-myWhite hover:bg-myBlack hover:text-myWhite focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2"
+        className="z-10 left-10 bottom-5 text-myBlack absolute  bg-myWhite hover:bg-myBlack hover:text-myWhite focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2"
       >
         Place An Order
       </button>

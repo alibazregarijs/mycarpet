@@ -51,7 +51,7 @@ const Card = ({ time, carpetName, situation }) => {
         </div>
         <button
           type="submit"
-          class="text-white bg-myRed hover:bg-myWhite hover:text-myBlack  font-medium rounded-lg text-sm px-4 py-2"
+          className="text-white bg-myRed hover:bg-myWhite hover:text-myBlack  font-medium rounded-lg text-sm px-4 py-2"
         >
           Search
         </button>

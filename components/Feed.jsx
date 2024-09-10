@@ -65,19 +65,19 @@ const Feed = () => {
           <div className="flex justify-center lg:mr-0 mr-4 items-center">
             <button
               type="submit"
-              class="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
+              className="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                class="size-5 text-black mx-1"
+                className="size-5 text-black mx-1"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
               </svg>

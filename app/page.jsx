@@ -43,7 +43,7 @@ export default async function Home() {
                 await signIn("google");
               }}
             >
-              <button class="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
+              <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
                 Sign In With Google
               </button>
             </form>

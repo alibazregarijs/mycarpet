@@ -15,18 +15,22 @@ import carpet4 from "../public/assets/images/carpet4.jpg";
 const Slider = () => {
   const slides = [
     {
+      id: 1,
       name: "Mashhad",
       img: carpet1,
     },
     {
+      id: 2,
       name: "Shiraz",
       img: carpet2,
     },
     {
+      id: 3,
       name: "Ahvaz",
       img: carpet3,
     },
     {
+      id: 4,
       name: "Mashhad",
       img: carpet4,
     },
@@ -38,17 +42,17 @@ const Slider = () => {
       spaceBetween={50}
       slidesPerView={2}
       pagination={{ clickable: true }}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => {}}
+      onSwiper={(swiper) => {}}
     >
       {slides.map((slide) => (
-        <SwiperSlide key={slide.img}>
+        <SwiperSlide key={slide.id}>
           <Image
             className="h-60 cursor-pointer"
             src={slide.img}
             width={0}
             height={0}
-            alt={slide.title}
+            alt={slide.name+""+slide.name}
           />
         </SwiperSlide>
       ))}
