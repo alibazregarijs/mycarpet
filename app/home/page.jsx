@@ -10,14 +10,12 @@ import Form from "@/components/Form";
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);
-  const [carpet, setCarpet] = useState({
-    id: "",
-    name: "",
-    width: "",
-    height: "",
-    price: "",
-    customerId: "",
-  });
+  const [addCarpet, setAddCarpet] = useState(false);
+  const [quantity, setQuantity] = useState(null);
+  const [price, setPrice] = useState(45);
+  const [height, setHeight] = useState(null);
+  const [carpetType, setCarpetType] = useState(null);
+  const [carpets, setCarpets] = useState([]);
   const [navToggleContext, setNavToggleContext] = useState(true);
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
@@ -30,10 +28,20 @@ const Home = () => {
       <div className="flex justify-center items-center absolute h-screen z-10 top-0 bottom-0 left-0 right-0">
         <Form
           type="Create"
-          carpet={carpet}
-          setCarpet={setCarpet}
+          carpets={carpets}
+          setCarpets={setCarpets}
           submiting={submiting}
           handleSubmiting={createCarpet}
+          addCarpet={addCarpet}
+          setAddCarpet={setAddCarpet}
+          quantity={quantity}
+          price={price}
+          height={height}
+          CarpetType={carpetType}
+          setQuantity={setQuantity}
+          setPrice={setPrice}
+          setHeight={setHeight}
+          setCarpetType={setCarpetType}
         />
       </div>
       <div className="h-screen overflow-y-scroll  hide-scrollbar blur-sm">
