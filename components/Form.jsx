@@ -12,42 +12,43 @@ const Form = ({
   submiting,
   handleSubmiting,
   quantity,
-  carpetType,
   price,
   height,
   setQuantity,
   setPrice,
   setHeight,
-  setCarpetType,
 }) => {
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
   };
 
-  const handleSelect = (e) => {
-    console.log(e.target.value);
+  const remove = (e, id) => {
+    e.preventDefault();
+    const index = carpets.findIndex((element) => element.id === id);
+    if (id !== -1) {
+      setCarpets((oldCarpets) => [...oldCarpets, carpets.splice(index, 1)]);
+    }
   };
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    console.log(price, "price after add");
-
-    if (quantity != 0) {
+    console.log(carpets.length + 1, "id");
+    if (quantity > 0) {
       setCarpets((carpets) => [
         ...carpets,
         {
+          id: carpets.length + 1,
           quantity: quantity,
-          carpetType: carpetType,
-          price: price * height,
+          price: price * height * quantity,
           height: height,
         },
       ]);
       setAddCarpet(true);
     } else {
+      console.log("salam");
       toast.error("the quantity of carpet must be bigger than 0", {
-        position: toast.POSITION.TOP_CENTER,
         autoClose: 20000,
       });
     }
@@ -110,8 +111,9 @@ const Form = ({
               </option>
               <option value={25}>Nanoshor 25 Toman Per Meter</option>
             </select>
-            <div className="flex flex-row-reverse mt-5  h-12 ">
+            <div className="flex  justify-center mt-5  h-12 ">
               <button
+                disabled={!height && !quantity}
                 onClick={(e) => {
                   handleSubmitForm(e), clearForm();
                 }}
@@ -126,15 +128,34 @@ const Form = ({
 
       {addCarpet &&
         carpets.map((carpet, index) => (
-          <div key={index}>
-            <div className="flex justify-between items-center mt-5 border p-2 rounded-lg shadow-2xl ">
-              <h2 className="font-bold font-mono  text-myBlack ">
-                {carpet.height} Meter
-              </h2>
-              <p className="font-bold font-mono  text-myBlack">
-                {carpet.price} $
-              </p>
-            </div>
+          <div>
+            {carpet.quantity && carpet.height && (
+              <div key={index}>
+                <div className="flex justify-between space-x-4 items-center mt-5 border p-2 rounded-lg shadow-2xl ">
+                  <div className="flex">
+                    <h2 className="font-bold font-mono  text-myBlack ">
+                      Quantity:{carpet.quantity}
+                    </h2>
+                  </div>
+                  <div className="flex">
+                    <h2 className="font-bold font-mono  text-myBlack ">
+                      Meter:{carpet.height}
+                    </h2>
+                  </div>
+                  <div className="flex">
+                    <p className="font-bold font-mono  text-myBlack">
+                      $:{carpet.price}
+                    </p>
+                  </div>
+                  <button
+                    onClick={(e) => remove(e, carpet.id)}
+                    className="bg-myRed   hover:A91D3A text-white font-semibold mx-2 py-1 px-2 border border-myRed rounded shadow"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       {addCarpet && (

@@ -37,11 +37,9 @@ const Home = () => {
           quantity={quantity}
           price={price}
           height={height}
-          CarpetType={carpetType}
           setQuantity={setQuantity}
           setPrice={setPrice}
           setHeight={setHeight}
-          setCarpetType={setCarpetType}
         />
       </div>
       <div className="h-screen overflow-y-scroll  hide-scrollbar blur-sm">
