@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import em1 from "../public/assets/images/em1.jpg";
 import em2 from "../public/assets/images/em2.jpg";
@@ -5,8 +6,11 @@ import em3 from "../public/assets/images/em3.jpg";
 import Image from "next/image";
 import Slider from "@/components/Slider";
 import Card from "./Card";
+import { useState } from "react";
+import Form from "./Form";
 
 const Feed = () => {
+  
   return (
     <div>
       <div className="  flex justify-between items-center mx-5 mt-3">
@@ -62,7 +66,7 @@ const Feed = () => {
           <div className="flex justify-center items-center border-l-2 mx-3 p-3  ">
             <p></p>
           </div>
-          <div className="flex justify-center lg:mr-0 mr-4 items-center">
+          <div className="flex  justify-center lg:mr-0 mr-4 items-center">
             <button
               type="submit"
               className="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
@@ -83,6 +87,7 @@ const Feed = () => {
               </svg>
               Add Carpet
             </button>
+            
           </div>
         </div>
       </div>

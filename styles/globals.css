@@ -12,7 +12,6 @@
   background-color: #000 !important;
 }
 
-
 /* Hide scrollbar for IE, Edge and Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
@@ -23,4 +22,8 @@
   font-family: sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.glassmorphism {
+  @apply rounded-xl border  bg-myBlack/25 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
 }
