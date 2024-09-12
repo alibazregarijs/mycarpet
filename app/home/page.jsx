@@ -1,3 +1,4 @@
+
 "use client";
 import react from "react";
 import Sidebar from "@/components/Sidebar";
@@ -41,6 +42,7 @@ const Home = () => {
           setPrice={setPrice}
           setHeight={setHeight}
         />
+
       </div>
       <div className="h-screen overflow-y-scroll  hide-scrollbar blur-sm">
         <div className="lg:grid grid-cols-12 grid-rows-12 ">
@@ -68,3 +70,4 @@ const Home = () => {
 };
 
 export default Home;
+

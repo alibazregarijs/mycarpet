@@ -113,7 +113,7 @@ const Form = ({
             </select>
             <div className="flex  justify-center mt-5  h-12 ">
               <button
-                disabled={!height && !quantity}
+                disabled={height < 1 || quantity < 1}
                 onClick={(e) => {
                   handleSubmitForm(e), clearForm();
                 }}
@@ -162,9 +162,10 @@ const Form = ({
         <div className="flex  flex-row-reverse  mt-5   h-12">
           <button
             onClick={() => setAddCarpet(true)}
+            disabled={submiting}
             className="bg-myBlack   hover:A91D3A text-white font-semibold py-2 px-4 border border-myBlack rounded shadow"
           >
-            Submit
+            {submiting ? `${type}...` : type}
           </button>
         </div>
       )}
