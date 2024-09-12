@@ -17,7 +17,10 @@ const Form = ({
   setQuantity,
   setPrice,
   setHeight,
+  user
 }) => {
+
+  console.log(user,"user")
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
@@ -43,6 +46,7 @@ const Form = ({
           quantity: quantity,
           price: price * height * quantity,
           height: height,
+        
         },
       ]);
       setAddCarpet(true);

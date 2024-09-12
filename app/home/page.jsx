@@ -1,4 +1,3 @@
-
 "use client";
 import react from "react";
 import Sidebar from "@/components/Sidebar";
@@ -8,6 +7,8 @@ import Feed from "@/components/Feed";
 import AppContext from "@/context/AppContext";
 import { useState } from "react";
 import Form from "@/components/Form";
+import { useEffect } from "react";
+import { signIn, auth } from "../api/auth/auth";
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);
@@ -22,7 +23,20 @@ const Home = () => {
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";
 
-  const createCarpet = async (e) => {};
+  // const session = await auth();
+  // console.log(session, "sassss");
+
+  const createCarpet = async (e) => {
+    e.preventDefault();
+    setSubmiting(true);
+
+    try {
+      const response = await fetch("api/carpet/new", {
+        method: "POST",
+        body: JSON.stringify(carpets),
+      });
+    } catch (error) {}
+  };
 
   return (
     <AppContext.Provider value={{ navToggleContext, setNavToggleContext }}>
@@ -42,7 +56,6 @@ const Home = () => {
           setPrice={setPrice}
           setHeight={setHeight}
         />
-
       </div>
       <div className="h-screen overflow-y-scroll  hide-scrollbar blur-sm">
         <div className="lg:grid grid-cols-12 grid-rows-12 ">
@@ -70,4 +83,3 @@ const Home = () => {
 };
 
 export default Home;
-

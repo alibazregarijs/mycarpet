@@ -9,7 +9,7 @@ const roboto = Roboto({ weight: "300", subsets: ["latin"] });
 
 export default async function Home() {
   const session = await auth();
-  console.log(session);
+
   return (
     <div className="flex justify-center items-center  h-screen">
       <div className="  w-full h-full">
