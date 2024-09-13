@@ -1,5 +1,5 @@
 "use client";
-import react from "react";
+
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
@@ -7,8 +7,7 @@ import Feed from "@/components/Feed";
 import AppContext from "@/context/AppContext";
 import { useState } from "react";
 import Form from "@/components/Form";
-import { useEffect } from "react";
-import { signIn, auth } from "../api/auth/auth";
+import { useSession } from "next-auth/react";
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);
@@ -19,12 +18,12 @@ const Home = () => {
   const [carpetType, setCarpetType] = useState(null);
   const [carpets, setCarpets] = useState([]);
   const [navToggleContext, setNavToggleContext] = useState(true);
+
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";
 
-  // const session = await auth();
-  // console.log(session, "sassss");
+  const { data: session } = useSession();
 
   const createCarpet = async (e) => {
     e.preventDefault();
@@ -43,18 +42,9 @@ const Home = () => {
       <div className="flex justify-center items-center absolute h-screen z-10 top-0 bottom-0 left-0 right-0">
         <Form
           type="Create"
-          carpets={carpets}
-          setCarpets={setCarpets}
           submiting={submiting}
-          handleSubmiting={createCarpet}
-          addCarpet={addCarpet}
-          setAddCarpet={setAddCarpet}
-          quantity={quantity}
-          price={price}
-          height={height}
-          setQuantity={setQuantity}
-          setPrice={setPrice}
-          setHeight={setHeight}
+          setSubmiting={setSubmiting}
+          userId={session?.user.id}
         />
       </div>
       <div className="h-screen overflow-y-scroll  hide-scrollbar blur-sm">

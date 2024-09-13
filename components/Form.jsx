@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 
-const Form = ({ type, submiting, setSubmiting, userId }) => {
+const Form = ({ type, userId,submiting , setSubmiting }) => {
   const router = useRouter();
   const [carpet, setCarpet] = useState({ quantity: "", height: "", price: 45 });
   const [carpets, setCarpets] = useState([]);

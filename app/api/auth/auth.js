@@ -6,6 +6,9 @@ import { connectToDB } from "@/utils/database";
 export const { handlers, session, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      return url;
+    },
     async session({ session }) {
       // store the user id from MongoDB to session
       const sessionUser = await User.findOne({ email: session.user.email });

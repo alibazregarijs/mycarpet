@@ -3,12 +3,13 @@ import background from "../public/assets/images/background.jpg";
 import Image from "next/image";
 import { Roboto } from "next/font/google";
 
+
 import { signIn, auth } from "./api/auth/auth";
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({ weight: "300", subsets: ["latin"] });
 
 export default async function Home() {
-  const session = await auth();
+  
 
   return (
     <div className="flex justify-center items-center  h-screen">
@@ -40,7 +41,7 @@ export default async function Home() {
             <form
               action={async () => {
                 "use server";
-                await signIn("google");
+                await signIn("google",{redirectTo:"/home"});
               }}
             >
               <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
