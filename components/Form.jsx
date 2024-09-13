@@ -1,29 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
-const Form = ({
-  type,
-  carpets,
-  setCarpets,
-  addCarpet,
-  setAddCarpet,
-  submiting,
-  handleSubmiting,
-  quantity,
-  price,
-  height,
-  setQuantity,
-  setPrice,
-  setHeight,
-  user
-}) => {
-
-  console.log(user,"user")
+const Form = ({ type, submiting, setSubmiting, userId }) => {
+  const router = useRouter();
+  const [carpet, setCarpet] = useState({ quantity: "", height: "", price: 45 });
+  const [carpets, setCarpets] = useState([]);
+  const [addCarpet, setAddCarpet] = useState(false);
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
+  };
+
+  const createCarpet = async (e) => {
+    e.preventDefault();
+    setSubmiting(true);
+
+    try {
+      const response = await fetch("/api/carpet/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: userId,
+          carpets: carpets,
+        }),
+      });
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmiting(false);
+    }
   };
 
   const remove = (e, id) => {
@@ -34,28 +44,20 @@ const Form = ({
     }
   };
 
-  const handleSubmitForm = (e) => {
+  const handleAddForm = (e) => {
     e.preventDefault();
-
-    console.log(carpets.length + 1, "id");
-    if (quantity > 0) {
+    if (carpet.quantity > 0) {
       setCarpets((carpets) => [
         ...carpets,
         {
           id: carpets.length + 1,
-          quantity: quantity,
-          price: price * height * quantity,
-          height: height,
-        
+          quantity: carpet.quantity,
+          price: carpet.price * carpet.height * carpet.quantity,
+          height: carpet.height,
         },
       ]);
-      setAddCarpet(true);
-    } else {
-      console.log("salam");
-      toast.error("the quantity of carpet must be bigger than 0", {
-        autoClose: 20000,
-      });
     }
+    setAddCarpet(true);
   };
 
   return (
@@ -79,7 +81,9 @@ const Form = ({
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="0"
               required
-              onChange={(e) => setQuantity(e.target.value)}
+              onChange={(e) =>
+                setCarpet({ ...carpet, quantity: e.target.value })
+              }
             />
             <label
               htmlFor="number-input"
@@ -94,7 +98,7 @@ const Form = ({
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Meter"
               required
-              onChange={(e) => setHeight(e.target.value)}
+              onChange={(e) => setCarpet({ ...carpet, height: e.target.value })}
             />
             <label
               htmlFor="countries"
@@ -104,11 +108,8 @@ const Form = ({
             </label>
             <select
               id="countries"
-              value={price}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
+              onChange={(e) => setCarpet({ ...carpet, price: e.target.value })}
             >
               <option defaultValue={45} value={45}>
                 Alashor 45 Toman Per Meter
@@ -117,9 +118,9 @@ const Form = ({
             </select>
             <div className="flex  justify-center mt-5  h-12 ">
               <button
-                disabled={!height && !quantity}
+                disabled={carpet.height < 1 || carpet.quantity < 1}
                 onClick={(e) => {
-                  handleSubmitForm(e), clearForm();
+                  handleAddForm(e), clearForm();
                 }}
                 className="bg-myRed   hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow"
               >
@@ -132,7 +133,7 @@ const Form = ({
 
       {addCarpet &&
         carpets.map((carpet, index) => (
-          <div>
+          <div key={index}>
             {carpet.quantity && carpet.height && (
               <div key={index}>
                 <div className="flex justify-between space-x-4 items-center mt-5 border p-2 rounded-lg shadow-2xl ">
@@ -165,10 +166,13 @@ const Form = ({
       {addCarpet && (
         <div className="flex  flex-row-reverse  mt-5   h-12">
           <button
-            onClick={() => setAddCarpet(true)}
+            onClick={(e) => {
+              setAddCarpet(true), createCarpet(e);
+            }}
+            // disabled={submiting}
             className="bg-myBlack   hover:A91D3A text-white font-semibold py-2 px-4 border border-myBlack rounded shadow"
           >
-            Submit
+            {submiting ? `${type}...` : type}
           </button>
         </div>
       )}
