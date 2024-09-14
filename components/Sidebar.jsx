@@ -9,7 +9,7 @@ import Link from "next/link";
 import Search from "./Search";
 import AppContext from "@/context/AppContext";
 import { useContext } from "react";
-
+ 
 const Sidebar = () => {
   const [dropMenu, setDropMenu] = useState({ name: "", situation: false });
   const context = useContext(AppContext);

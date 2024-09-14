@@ -8,9 +8,12 @@ import Slider from "@/components/Slider";
 import Card from "./Card";
 import { useState } from "react";
 import Form from "./Form";
+import BlurContext from "@/context/BlurContext";
+import { useContext } from "react";
 
 const Feed = () => {
-  
+  const context = useContext(BlurContext);
+
   return (
     <div>
       <div className="  flex justify-between items-center mx-5 mt-3">
@@ -68,6 +71,7 @@ const Feed = () => {
           </div>
           <div className="flex  justify-center lg:mr-0 mr-4 items-center">
             <button
+              onClick={() => context.setBlurContext(true)}
               type="submit"
               className="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
             >
@@ -87,7 +91,6 @@ const Feed = () => {
               </svg>
               Add Carpet
             </button>
-            
           </div>
         </div>
       </div>

@@ -3,12 +3,18 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import { IoIosCloseCircle } from "react-icons/io";
+import BlurContext from "@/context/BlurContext";
+import { useContext } from "react";
 
-const Form = ({ type, userId,submiting , setSubmiting }) => {
+const Form = ({ type, userId }) => {
   const router = useRouter();
   const [carpet, setCarpet] = useState({ quantity: "", height: "", price: 45 });
+  const [submiting, setSubmiting] = useState(false);
   const [carpets, setCarpets] = useState([]);
   const [addCarpet, setAddCarpet] = useState(false);
+  const context = useContext(BlurContext);
+
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
@@ -62,6 +68,15 @@ const Form = ({ type, userId,submiting , setSubmiting }) => {
 
   return (
     <div className="flex flex-col  gap-3 glassmorphism shadow-lg">
+      <div className="flex flex-row-reverse">
+        <IoIosCloseCircle
+          onClick={() => context.setBlurContext(false)}
+          className="cursor-pointer"
+          color="white"
+          fontSize={25}
+        />
+      </div>
+
       <div className="flex justify-center items-center gap-3 ">
         <div className="flex justify-center items-center ">
           <form
