@@ -21,6 +21,11 @@ const Form = ({ type, userId }) => {
     myFormRef.reset();
   };
 
+  const formOverFlowClass =
+    carpets.length >= 2
+      ? "flex flex-col h-screen overflow-y-scroll hide-scrollbar  gap-3 glassmorphism shadow-lg"
+      : "flex flex-col gap-3 glassmorphism shadow-lg";
+
   const createCarpet = async (e) => {
     e.preventDefault();
     setSubmiting(true);
@@ -68,8 +73,8 @@ const Form = ({ type, userId }) => {
   };
 
   return (
-    <div className="flex flex-col  gap-3 glassmorphism shadow-lg">
-      <div className="flex flex-row-reverse">
+    <div className={formOverFlowClass}>
+      <div className="flex  flex-row-reverse">
         <IoIosCloseCircle
           onClick={() => context.setBlurContext(false)}
           className="cursor-pointer"
@@ -78,11 +83,11 @@ const Form = ({ type, userId }) => {
         />
       </div>
 
-      <div className="flex justify-center items-center gap-3 ">
-        <div className="flex justify-center items-center ">
+      <div className="flex justify-center  items-center gap-3 ">
+        <div className="flex justify-center  items-center ">
           <form
             ref={(el) => (myFormRef = el)}
-            className="max-w-sm mx-auto space-y-2"
+            className="max-w-sm mx-auto space-y-2 "
           >
             <label
               htmlFor="number-input"
@@ -147,9 +152,7 @@ const Form = ({ type, userId }) => {
         </div>
       </div>
 
-      {addCarpet && (
-        CarpetListings(carpets)
-      )}
+      {addCarpet && CarpetListings(carpets)}
       {addCarpet && (
         <div className="flex  flex-row-reverse  mt-5   h-12">
           <button
