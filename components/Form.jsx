@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { IoIosCloseCircle } from "react-icons/io";
 import BlurContext from "@/context/BlurContext";
 import { useContext } from "react";
+import CarpetListings from "./CarpetListings";
 
 const Form = ({ type, userId }) => {
   const router = useRouter();
@@ -146,38 +147,9 @@ const Form = ({ type, userId }) => {
         </div>
       </div>
 
-      {addCarpet &&
-        carpets.map((carpet, index) => (
-          <div key={index}>
-            {carpet.quantity && carpet.height && (
-              <div key={index}>
-                <div className="flex justify-between space-x-4 items-center mt-5 border p-2 rounded-lg shadow-2xl ">
-                  <div className="flex">
-                    <h2 className="font-bold font-mono  text-myBlack ">
-                      Quantity:{carpet.quantity}
-                    </h2>
-                  </div>
-                  <div className="flex">
-                    <h2 className="font-bold font-mono  text-myBlack ">
-                      Meter:{carpet.height}
-                    </h2>
-                  </div>
-                  <div className="flex">
-                    <p className="font-bold font-mono  text-myBlack">
-                      $:{carpet.price}
-                    </p>
-                  </div>
-                  <button
-                    onClick={(e) => remove(e, carpet.id)}
-                    className="bg-myRed   hover:A91D3A text-white font-semibold mx-2 py-1 px-2 border border-myRed rounded shadow"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
+      {addCarpet && (
+        CarpetListings(carpets)
+      )}
       {addCarpet && (
         <div className="flex  flex-row-reverse  mt-5   h-12">
           <button

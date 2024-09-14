@@ -12,12 +12,6 @@ import BlurContext from "@/context/BlurContext";
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);
-  const [addCarpet, setAddCarpet] = useState(false);
-  const [quantity, setQuantity] = useState(null);
-  const [price, setPrice] = useState(45);
-  const [height, setHeight] = useState(null);
-  const [carpetType, setCarpetType] = useState(null);
-  const [carpets, setCarpets] = useState([]);
   const [navToggleContext, setNavToggleContext] = useState(true);
   const [blurContext, setBlurContext] = useState(false);
 
@@ -26,18 +20,6 @@ const Home = () => {
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";
 
   const { data: session } = useSession();
-
-  // const createCarpet = async (e) => {
-  //   e.preventDefault();
-  //   setSubmiting(true);
-
-  //   try {
-  //     const response = await fetch("api/carpet/new", {
-  //       method: "POST",
-  //       body: JSON.stringify(carpets),
-  //     });
-  //   } catch (error) {}
-  // };
 
   const blurClass = blurContext && "blur-sm";
   const addCarpetFormClass = blurContext

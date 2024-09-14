@@ -6,8 +6,6 @@ import em3 from "../public/assets/images/em3.jpg";
 import Image from "next/image";
 import Slider from "@/components/Slider";
 import Card from "./Card";
-import { useState } from "react";
-import Form from "./Form";
 import BlurContext from "@/context/BlurContext";
 import { useContext } from "react";
 
@@ -73,7 +71,7 @@ const Feed = () => {
             <button
               onClick={() => context.setBlurContext(true)}
               type="submit"
-              className="flex   text-myBlack border-2 border-myRed focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-2"
+              className="flex   text-myBlack border-2 border-myRed  font-medium rounded-lg text-sm px-2 py-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

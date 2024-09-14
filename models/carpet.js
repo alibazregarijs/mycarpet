@@ -9,6 +9,7 @@ const CarpetSchema = new Schema({
     type: Array,
     required: [true, "carpet is required."],
   },
+  time: { type: Date, default: Date.now },
 });
 
 const Carpet = models.Carpet || model("Carpet", CarpetSchema);
