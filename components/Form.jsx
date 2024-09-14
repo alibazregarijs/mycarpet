@@ -48,6 +48,7 @@ const Form = ({ type, userId }) => {
     }
   };
 
+  console.log(carpets, "salam");
   const remove = (e, id) => {
     e.preventDefault();
     const index = carpets.findIndex((element) => element.id === id);

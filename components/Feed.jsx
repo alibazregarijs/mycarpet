@@ -106,11 +106,8 @@ const Feed = () => {
           <div className="flex items-center">
             <h2 className="text-md  text-myBlack font-bold">Your Carpet</h2>
           </div>
-          <div className="mt-5 border bg-myBlack rounded-lg">
+          <div className="mt-5">
             <Card situation={"complete"} carpetName={"Mashhad"} time={2} />
-          </div>
-          <div className="mt-1 border bg-myBlack rounded-lg">
-            <Card situation={"Incomplete"} carpetName={"Ahvaz"} time={60} />
           </div>
         </div>
       </div>

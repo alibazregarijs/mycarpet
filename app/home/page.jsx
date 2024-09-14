@@ -5,15 +5,22 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Feed from "@/components/Feed";
 import AppContext from "@/context/AppContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "@/components/Form";
 import { useSession } from "next-auth/react";
 import BlurContext from "@/context/BlurContext";
+import { time } from "../../utils/getTime";
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);
   const [navToggleContext, setNavToggleContext] = useState(true);
   const [blurContext, setBlurContext] = useState(false);
+
+
+
+  // console.log(time());
+
+  
 
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
