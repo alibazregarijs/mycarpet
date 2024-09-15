@@ -1,30 +1,37 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
+import { useSession } from "next-auth/react";
 
 const Card = ({ time, carpetName, situation }) => {
   const [loading, setLoading] = useState(true);
   const [carpets, setCarpets] = useState([]);
+  const { data: session } = useSession();
+
+  console.log(session);
 
   useEffect(() => {
     const getCarpets = async () => {
       try {
-        const response = await fetch("/api/carpet");
+        const response = await fetch(`/api/users/${session?.user.id}/carpets`);
         const data = await response.json();
         setCarpets(data);
         setLoading(false);
       } catch (error) {}
     };
-    getCarpets();
-  }, []);
+    if (session?.user.id) getCarpets();
+  }, [session?.user.id]);
   return (
     <section>
       {loading ? (
         <Spinner loading={true}></Spinner>
       ) : (
         carpets.map((carpet) =>
-          carpet.carpet.map((c) => (
-            <div className="flex flex-col  mt-1  bg-myBlack rounded-lg">
+          carpet.carpet.map((c, index) => (
+            <div
+              key={index}
+              className="flex flex-col  mt-1  bg-myBlack rounded-lg"
+            >
               <div className="flex justify-between mx-3 items-center mt-1  ">
                 <p className="opacity-50 cursor-pointer text-sm text-white">
                   Quantity : {c.quantity}

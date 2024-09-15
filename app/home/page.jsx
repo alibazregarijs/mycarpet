@@ -15,18 +15,11 @@ const Home = () => {
   const [submiting, setSubmiting] = useState(false);
   const [navToggleContext, setNavToggleContext] = useState(true);
   const [blurContext, setBlurContext] = useState(false);
-
-
-
-  // console.log(time());
-
-  
+  const { data: session } = useSession();
 
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";
-
-  const { data: session } = useSession();
 
   const blurClass = blurContext && "blur-sm";
   const addCarpetFormClass = blurContext
