@@ -16,10 +16,13 @@ const Form = ({ type, userId }) => {
   const [addCarpet, setAddCarpet] = useState(false);
   const context = useContext(BlurContext);
 
+  useEffect(() => {
+    carpets.length == 0 && setAddCarpet(false);
+  }, [carpets.length]);
+
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
-    console.log("clicked");
   };
 
   const formOverFlowClass =
@@ -74,7 +77,7 @@ const Form = ({ type, userId }) => {
           height: carpet.height,
         },
       ]);
-      setCarpet({ quantity: 0, height: 0 , price:45 });
+      setCarpet({ quantity: 0, height: 0, price: 45 });
     }
     setAddCarpet(true);
   };
@@ -162,10 +165,9 @@ const Form = ({ type, userId }) => {
       {addCarpet && CarpetListings({ setCarpets, carpets, clearForm })}
       {addCarpet && (
         <div className="flex  flex-row-reverse  mt-5   h-12">
-          {console.log(addCarpet, "add carpet")}
           <button
             onClick={(e) => {
-              setAddCarpet(true), createCarpet(e);
+              createCarpet(e);
             }}
             disabled={submiting}
             className="bg-myBlack   hover:A91D3A text-white font-semibold py-2 px-4 border border-myBlack rounded shadow"
