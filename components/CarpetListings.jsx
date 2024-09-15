@@ -1,6 +1,6 @@
 import React from "react";
 
-const CarpetListings = (carpets) => {
+const CarpetListings = ({ setCarpets, carpets, remove, clearForm }) => {
   return carpets.map((carpet, index) => (
     <div key={index}>
       {carpet.quantity && carpet.height && (
@@ -22,7 +22,9 @@ const CarpetListings = (carpets) => {
               </p>
             </div>
             <button
-              onClick={(e) => remove(e, carpet.id)}
+              onClick={() => {
+                setCarpets(carpets.filter((a) => a.id !== carpet.id));
+              }}
               className="bg-myRed   hover:A91D3A text-white font-semibold mx-2 py-1 px-2 border border-myRed rounded shadow"
             >
               Remove

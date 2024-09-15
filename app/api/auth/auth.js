@@ -21,6 +21,7 @@ export const { handlers, session, signIn, signOut, auth } = NextAuth({
         await connectToDB();
 
         // check if user already exists
+        console.log(profile,"profileeeeeeeeeee");
         const userExists = await User.findOne({ email: profile.email });
 
         // if not, create a new document and save user in MongoDB

@@ -19,6 +19,7 @@ const Form = ({ type, userId }) => {
   let myFormRef = useRef(null);
   const clearForm = () => {
     myFormRef.reset();
+    console.log("clicked");
   };
 
   const formOverFlowClass =
@@ -48,14 +49,18 @@ const Form = ({ type, userId }) => {
     }
   };
 
-  console.log(carpets, "salam");
-  const remove = (e, id) => {
-    e.preventDefault();
-    const index = carpets.findIndex((element) => element.id === id);
-    if (id !== -1) {
-      setCarpets((oldCarpets) => [...oldCarpets, carpets.splice(index, 1)]);
-    }
-  };
+  // const remove = (e, id) => {
+  //   e.preventDefault();
+  //   const index = carpets.findIndex((element) => element.id === id);
+  //   if (id !== -1) {
+  //     setCarpets((oldCarpets) => [...oldCarpets, carpets.splice(index, 1)]);
+  //   }
+
+  //   setCarpet([]);
+
+  //   // carpets.length == 0 && setAddCarpet(false);
+  //   console.log(carpets.length == 0);
+  // };
 
   const handleAddForm = (e) => {
     e.preventDefault();
@@ -69,6 +74,7 @@ const Form = ({ type, userId }) => {
           height: carpet.height,
         },
       ]);
+      setCarpet({ quantity: 0, height: 0 , price:45 });
     }
     setAddCarpet(true);
   };
@@ -153,14 +159,15 @@ const Form = ({ type, userId }) => {
         </div>
       </div>
 
-      {addCarpet && CarpetListings(carpets)}
+      {addCarpet && CarpetListings({ setCarpets, carpets, clearForm })}
       {addCarpet && (
         <div className="flex  flex-row-reverse  mt-5   h-12">
+          {console.log(addCarpet, "add carpet")}
           <button
             onClick={(e) => {
               setAddCarpet(true), createCarpet(e);
             }}
-            // disabled={submiting}
+            disabled={submiting}
             className="bg-myBlack   hover:A91D3A text-white font-semibold py-2 px-4 border border-myBlack rounded shadow"
           >
             {submiting ? `${type}...` : type}
