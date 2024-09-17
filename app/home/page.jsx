@@ -17,6 +17,10 @@ const Home = () => {
   const [blurContext, setBlurContext] = useState(false);
   const { data: session } = useSession();
 
+  useEffect(() => {
+    console.log("salam");
+  }, []);
+
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";

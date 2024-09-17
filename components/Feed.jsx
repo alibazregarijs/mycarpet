@@ -8,6 +8,7 @@ import Slider from "@/components/Slider";
 import Card from "./Card";
 import BlurContext from "@/context/BlurContext";
 import { useContext } from "react";
+import CardListing from "./CardListing";
 
 const Feed = () => {
   const context = useContext(BlurContext);
@@ -107,7 +108,7 @@ const Feed = () => {
             <h2 className="text-md  text-myBlack font-bold">Your Carpet</h2>
           </div>
           <div className="mt-5">
-            <Card situation={"complete"} carpetName={"Mashhad"} time={2} />
+            <CardListing />
           </div>
         </div>
       </div>

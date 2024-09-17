@@ -43,7 +43,9 @@ const Form = ({ type, userId }) => {
         }),
       });
       if (response.ok) {
-        router.push("/");
+        context.setBlurContext(false);
+
+        router.refresh();
       }
     } catch (error) {
       console.log(error);

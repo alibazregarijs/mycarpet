@@ -1,6 +1,5 @@
 import React from "react";
-
-const CarpetListings = ({ setCarpets, carpets, remove, clearForm }) => {
+const CarpetListings = ({ setCarpets, carpets}) => {
   return carpets.map((carpet, index) => (
     <div key={index}>
       {carpet.quantity && carpet.height && (
