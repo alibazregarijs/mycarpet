@@ -2,7 +2,7 @@ import React from "react";
 
 const Card = ({ index = 0, carpet }) => {
   return (
-    <sectio>
+    <section>
       {carpet ? (
         <div key={index} className="flex flex-col  mt-1  bg-myBlack rounded-lg">
           <div className="flex justify-between mx-3 items-center mt-1  ">
@@ -109,7 +109,7 @@ const Card = ({ index = 0, carpet }) => {
           </div>
         </div>
       )}
-    </sectio>
+    </section>
   );
 };
 

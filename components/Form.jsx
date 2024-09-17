@@ -7,6 +7,8 @@ import { IoIosCloseCircle } from "react-icons/io";
 import BlurContext from "@/context/BlurContext";
 import { useContext } from "react";
 import CarpetListings from "./CarpetListings";
+import { useSession } from "next-auth/react";
+import CarpetContext from "@/context/CarpetContext";
 
 const Form = ({ type, userId }) => {
   const router = useRouter();
@@ -14,7 +16,11 @@ const Form = ({ type, userId }) => {
   const [submiting, setSubmiting] = useState(false);
   const [carpets, setCarpets] = useState([]);
   const [addCarpet, setAddCarpet] = useState(false);
+
   const context = useContext(BlurContext);
+  const carpetContext = useContext(CarpetContext);
+
+  const { data: session } = useSession();
 
   useEffect(() => {
     carpets.length == 0 && setAddCarpet(false);
@@ -43,9 +49,11 @@ const Form = ({ type, userId }) => {
         }),
       });
       if (response.ok) {
+        const response = await fetch(`/api/users/${session?.user.id}/carpets`);
+        const data = await response.json();
+        carpetContext.setCarpetsQuery(data);
         context.setBlurContext(false);
-
-        router.refresh();
+        setCarpets([]);
       }
     } catch (error) {
       console.log(error);
