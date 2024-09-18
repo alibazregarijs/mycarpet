@@ -6,7 +6,7 @@ const Card = ({ index = 0, carpet }) => {
       {carpet ? (
         <div
           key={index}
-          className="flex flex-col mt-1     bg-myBlack rounded-lg"
+          className="flex flex-col  h-60 mt-4    bg-myBlack rounded-lg"
         >
           <div className="flex justify-between mx-3 items-center mt-2  ">
             <p className="opacity-50 cursor-pointer text-sm text-white">
@@ -30,7 +30,7 @@ const Card = ({ index = 0, carpet }) => {
               </svg>
             </div>
           </div>
-          <div className="flex mt-1 mx-3">
+          <div className="flex mt-10 mx-3 ">
             <p className="text-white">Lorem ipsum dolor sit amet.</p>
           </div>
           <div className="flex justify-between items-center space-x-1 m-3">

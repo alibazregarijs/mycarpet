@@ -134,24 +134,7 @@ const Feed = () => {
           <div className="flex items-center">
             <h2 className="text-md  text-myBlack font-bold">Your Carpet</h2>
           </div>
-          <div className="mt-3 overflow-y-scroll hide-scrollbar h-60  ">
-            {/* <div className="flex mb-4 text-center justify-center absolute top-100 bottom-0 right-0 left-[78%] w-7 border z-10 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                color="white"
-                className="size-6 cursor-pointer"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-                />
-              </svg>
-            </div> */}
+          <div className="">
             <CardListing />
           </div>
         </div>

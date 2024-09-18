@@ -11,6 +11,8 @@ import AppContext from "@/context/AppContext";
 import BlurContext from "@/context/BlurContext";
 import CarpetContext from "@/context/CarpetContext";
 import { time } from "../../utils/getTime";
+import { register } from "swiper/element/bundle";
+register();
 
 const Home = () => {
   const [submiting, setSubmiting] = useState(false);

@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Card from "./Card";
 import CarpetContext from "@/context/CarpetContext";
 import { useContext } from "react";
+import CardSlider from "./CardSlider";
 
 const CardListing = () => {
   const [loading, setLoading] = useState(true);
@@ -29,11 +30,7 @@ const CardListing = () => {
       {loading ? (
         <Spinner loading={true}></Spinner>
       ) : (
-        carpetContext.carpetsQuery.map((carpet) =>
-          carpet.carpet.map((c, index) => (
-            <Card key={index} index={index} carpet={c} />
-          ))
-        )
+        <CardSlider cards={carpetContext.carpetsQuery}/>
       )}
     </div>
   );
