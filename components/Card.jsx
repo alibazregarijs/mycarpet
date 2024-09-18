@@ -30,11 +30,11 @@ const Card = ({ index = 0, carpet }) => {
               </svg>
             </div>
           </div>
-          <div className="flex mt-10 mx-3 ">
+          <div className="flex mt-5 mx-3 ">
             <p className="text-white">Lorem ipsum dolor sit amet.</p>
           </div>
           <div className="flex justify-between items-center space-x-1 m-3">
-            <div className="flex mt-1 space-x-1">
+            <div className="flex mt-16 space-x-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -55,7 +55,7 @@ const Card = ({ index = 0, carpet }) => {
             </div>
             <button
               type="submit"
-              className="text-white bg-myRed hover:bg-myWhite hover:text-myBlack  font-medium rounded-lg text-sm px-4 py-2"
+              className="text-white mt-16 bg-myRed hover:bg-myWhite hover:text-myBlack  font-medium rounded-lg text-sm px-4 py-2"
             >
               Search
             </button>
