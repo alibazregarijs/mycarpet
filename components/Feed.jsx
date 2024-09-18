@@ -9,6 +9,33 @@ import Card from "./Card";
 import BlurContext from "@/context/BlurContext";
 import { useContext } from "react";
 import CardListing from "./CardListing";
+import carpet1 from "../public/assets/images/carpet1.jpg";
+import carpet2 from "../public/assets/images/carpet2.jpg";
+import carpet3 from "../public/assets/images/carpet3.webp";
+import carpet4 from "../public/assets/images/carpet4.jpg";
+
+const slides = [
+  {
+    id: 1,
+    name: "Mashhad",
+    img: carpet1,
+  },
+  {
+    id: 2,
+    name: "Shiraz",
+    img: carpet2,
+  },
+  {
+    id: 3,
+    name: "Ahvaz",
+    img: carpet3,
+  },
+  {
+    id: 4,
+    name: "Mashhad",
+    img: carpet4,
+  },
+];
 
 const Feed = () => {
   const context = useContext(BlurContext);
@@ -99,15 +126,32 @@ const Feed = () => {
             <h2 className="text-md  text-myBlack font-bold">Recent Carpets</h2>
             <p className="opacity-50 cursor-pointer text-sm">View All</p>
           </div>
-          <div className="flex justify-between py-3 items-center mt-2">
-            <Slider />
+          <div className="flex justify-between  items-center mt-4">
+            <Slider slides={slides} />
           </div>
         </div>
         <div className="col-span-6">
           <div className="flex items-center">
             <h2 className="text-md  text-myBlack font-bold">Your Carpet</h2>
           </div>
-          <div className="mt-5">
+          <div className="mt-3 overflow-y-scroll hide-scrollbar h-60  ">
+            {/* <div className="flex mb-4 text-center justify-center absolute top-100 bottom-0 right-0 left-[78%] w-7 border z-10 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                color="white"
+                className="size-6 cursor-pointer"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                />
+              </svg>
+            </div> */}
             <CardListing />
           </div>
         </div>

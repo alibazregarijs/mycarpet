@@ -4,8 +4,11 @@ const Card = ({ index = 0, carpet }) => {
   return (
     <section>
       {carpet ? (
-        <div key={index} className="flex flex-col  mt-1  bg-myBlack rounded-lg">
-          <div className="flex justify-between mx-3 items-center mt-1  ">
+        <div
+          key={index}
+          className="flex flex-col mt-1     bg-myBlack rounded-lg"
+        >
+          <div className="flex justify-between mx-3 items-center mt-2  ">
             <p className="opacity-50 cursor-pointer text-sm text-white">
               Quantity : {carpet.quantity}
             </p>

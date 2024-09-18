@@ -6,16 +6,12 @@ import Card from "./Card";
 import CarpetContext from "@/context/CarpetContext";
 import { useContext } from "react";
 
-
 const CardListing = () => {
   const [loading, setLoading] = useState(true);
   const [carpets, setCarpets] = useState([]);
   const { data: session } = useSession();
   const carpetContext = useContext(CarpetContext);
 
-
-
-  console.log("in carpetlisting ", carpets);
   useEffect(() => {
     const getCarpets = async () => {
       try {

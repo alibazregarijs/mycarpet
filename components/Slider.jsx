@@ -7,35 +7,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import Image from "next/image";
-import carpet1 from "../public/assets/images/carpet1.jpg";
-import carpet2 from "../public/assets/images/carpet2.jpg";
-import carpet3 from "../public/assets/images/carpet3.webp";
-import carpet4 from "../public/assets/images/carpet4.jpg";
 
-const Slider = () => {
-  const slides = [
-    {
-      id: 1,
-      name: "Mashhad",
-      img: carpet1,
-    },
-    {
-      id: 2,
-      name: "Shiraz",
-      img: carpet2,
-    },
-    {
-      id: 3,
-      name: "Ahvaz",
-      img: carpet3,
-    },
-    {
-      id: 4,
-      name: "Mashhad",
-      img: carpet4,
-    },
-  ];
-
+const Slider = ({ slides }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -52,7 +25,7 @@ const Slider = () => {
             src={slide.img}
             width={0}
             height={0}
-            alt={slide.name+""+slide.name}
+            alt={slide.name + "" + slide.name}
           />
         </SwiperSlide>
       ))}
