@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const Product = new Schema({
+const SellSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
@@ -12,13 +12,14 @@ const Product = new Schema({
 
   price: {
     type: Number,
-    required: [true, "Username is required!"],
+    required: [true, "price is required!"],
   },
   description: {
     type: String,
   },
   quantity:{
-    type:Number
+    type:Number,
+    required: [true, "quantity is required!"],
   },
   meter:{
     type:Number,
@@ -26,3 +27,8 @@ const Product = new Schema({
     default: 6
   }
 });
+
+const Sell = models.Sell || model("Sell", SellSchema);
+
+export default Sell;
+
