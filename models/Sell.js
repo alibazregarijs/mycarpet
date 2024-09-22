@@ -17,18 +17,18 @@ const SellSchema = new Schema({
   description: {
     type: String,
   },
-  quantity:{
-    type:Number,
+  quantity: {
+    type: Number,
     required: [true, "quantity is required!"],
   },
-  meter:{
-    type:Number,
-    enum : [6,9,12],
-    default: 6
-  }
+  meter: {
+    type: Number,
+    enum: [6, 9, 12],
+    default: 6,
+  },
+  time: { type: Date, default: Date.now },
 });
 
 const Sell = models.Sell || model("Sell", SellSchema);
 
 export default Sell;
-
