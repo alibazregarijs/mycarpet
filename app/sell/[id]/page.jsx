@@ -13,6 +13,7 @@ import CarpetContext from "@/context/CarpetContext";
 import Image from "next/image";
 import { register } from "swiper/element/bundle";
 import carpet1 from "../../../public/assets/images/carpet1.jpg";
+import { Counter } from "@/components/Counter";
 
 register();
 
@@ -74,8 +75,8 @@ const Home = () => {
                     />
                   </div>
                   <div className="col-span-7 text-center mt-2  items-center justify-center ">
-                    <div className="flex flex-col space-y-10 items-center justify-center ">
-                      <h1 className="  hover:A91D3A text-black  py-2 px-4 border border-myRed rounded-full shadow-lg font-bold text-2xl">
+                    <div className="flex flex-col space-y-4 items-center justify-center ">
+                      <h1 className="  hover:A91D3A text-black  py-2 px-4 border border-myRed rounded-full  shadow-md font-bold text-2xl">
                         Buy Without Any Hesitate
                       </h1>
                       <h3 className="font-bold text-xl text-transform: uppercase">
@@ -94,6 +95,9 @@ const Home = () => {
                         quia autem debitis possimus? Reiciendis perspiciatis
                         dolorem excepturi a repellat!
                       </p>
+                      <div className="counterNumber">
+                        <Counter />
+                      </div>
                       <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
                         Buy This Carpet Now !
                       </button>
