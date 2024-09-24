@@ -6,7 +6,7 @@ export const POST = async (request) => {
 
   try {
     await connectToDB();
-    const newCarpet = new Carpet({ userId: userId, carpet: carpets });
+    const newCarpet = new Carpet({ userId: userId, carpet: carpets }) ;
 
     await newCarpet.save();
     return new Response(JSON.stringify(newCarpet), { status: 201 });

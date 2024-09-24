@@ -2,11 +2,19 @@ import Sell from "@/models/Sell";
 import { connectToDB } from "@/utils/database";
 
 export const POST = async (request) => {
-  const { sell } = await request.json();
+  const { userId, name, price, description, quantity, meter } =
+    await request.json();
 
   try {
     await connectToDB();
-    const newSell = new Sell({ sell: sell });
+    const newSell = new Sell({
+      userId,
+      name,
+      price,
+      description,
+      quantity,
+      meter,
+    });
 
     await newSell.save();
     return new Response(JSON.stringify(newSell), { status: 201 });

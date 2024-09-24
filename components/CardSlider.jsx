@@ -14,9 +14,11 @@ export default function CardSlider({ cards }) {
         >
           {cards.map((carpet) =>
             carpet.carpet.map((c, index) => (
-              <swiper-slide>
-                <Card key={index} index={index} carpet={c} />
-              </swiper-slide>
+              <div key={index}>
+                <swiper-slide>
+                  <Card carpet={c} />
+                </swiper-slide>
+              </div>
             ))
           )}
         </swiper-container>

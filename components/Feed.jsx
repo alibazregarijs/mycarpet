@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import em1 from "../public/assets/images/em1.jpg";
 import em2 from "../public/assets/images/em2.jpg";
 import em3 from "../public/assets/images/em3.jpg";
@@ -39,7 +39,16 @@ const slides = [
 
 const Feed = () => {
   const context = useContext(BlurContext);
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const getProduct = async () => {
+      const res = await fetch("http://localhost:8000/Products");
+      const product = await res.json();
+      setProducts(product);
+    };
+    getProduct();
+  }, []);
   return (
     <div>
       <div className="  flex justify-between items-center mx-5 mt-3">
@@ -127,7 +136,7 @@ const Feed = () => {
             <p className="opacity-50 cursor-pointer text-sm">View All</p>
           </div>
           <div className="flex justify-between  items-center mt-4">
-            <Slider slides={slides} />
+            <Slider slides={products} />
           </div>
         </div>
         <div className="col-span-6">
