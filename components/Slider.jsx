@@ -5,12 +5,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import carpet1 from "../public/assets/images/carpet1.jpg";
+import Link from 'next/link'
 
 import Image from "next/image";
 
 const Slider = ({ slides }) => {
-  console.log(carpet1, "ssss");
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -22,13 +21,13 @@ const Slider = ({ slides }) => {
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id}>
-          <Image
-            className="h-60  cursor-pointer"
-            src="/_next/static/media/carpet1.jpg"
-            width={0}
-            height={0}
-            alt={slide.name + "" + slide.name}
-          />
+          <Link href={`/sell/${slide.id}`}>
+            <img
+              className="h-60 w-72  cursor-pointer"
+              src={slide.image}
+              alt=""
+            />
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>
