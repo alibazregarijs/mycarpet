@@ -14,16 +14,21 @@ import Image from "next/image";
 import { register } from "swiper/element/bundle";
 import carpet1 from "../../../public/assets/images/carpet1.jpg";
 import { Counter } from "@/components/Counter";
-
+import { useRouter } from "next/router";
+import Spinner from "@/components/Spinner";
 register();
 
-const Home = () => {
+const Home = ({ params }) => {
   const [submiting, setSubmiting] = useState(false);
   const [navToggleContext, setNavToggleContext] = useState(true);
   const [blurContext, setBlurContext] = useState(false);
   const [carpetsQuery, setCarpetsQuery] = useState([]);
   const { data: session } = useSession();
-
+  const [product, setProduct] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [currentValue, setCurrentValue] = useState(0);
+  
+  const productId = params.id[0];
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
     : "col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar  ";
@@ -32,6 +37,16 @@ const Home = () => {
   const addCarpetFormClass = blurContext
     ? "flex justify-center items-center z-10 absolute h-screen top-0 bottom-0 left-0 right-0"
     : "hidden";
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const res = await fetch(`http://localhost:8000/Products/${productId}`);
+      const data = await res.json();
+      setProduct(data);
+      setLoading(false);
+    };
+    getProduct();
+  }, []);
 
   return (
     <AppContext.Provider value={{ navToggleContext, setNavToggleContext }}>
@@ -64,46 +79,38 @@ const Home = () => {
               <div className="col-span-10 row-span-12 bg-myWhite rounded-2xl ">
                 <Navbar />
                 <Hero />
-                <div className="grid grid-cols-12 gap-4 row-span-12 ">
-                  <div className="col-span-5 mx-5 text-center items-center justify-center ">
-                    <Image
-                      className="h-96 w-full  mt-3 rounded-md  shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-400"
-                      src={carpet1}
-                      width={0}
-                      height={0}
-                      alt={""}
-                    />
-                  </div>
-                  <div className="col-span-7 text-center mt-2  items-center justify-center ">
-                    <div className="flex flex-col space-y-4 items-center justify-center ">
-                      <h1 className="  hover:A91D3A text-black  py-2 px-4 border border-myRed rounded-full  shadow-md font-bold text-2xl">
-                        Buy Without Any Hesitate
-                      </h1>
-                      <h3 className="font-bold text-xl text-transform: uppercase">
-                        The Best Carpet Gallery In Iran We Produce The Best
-                        Carpets
-                      </h3>
+                {loading ? (
+                  <Spinner loading={true} />
+                ) : (
+                  <div className="grid grid-cols-12 gap-4 row-span-12 ">
+                    <div className="col-span-5 mx-5 text-center items-center justify-center ">
+                      <img
+                        src={product.image}
+                        className="h-96 w-full  mt-3 rounded-md  shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-gray-400"
+                        alt=""
+                      />
+                    </div>
+                    <div className="col-span-7 text-center mt-2  items-center justify-center ">
+                      <div className="flex flex-col space-y-4 items-center justify-center ">
+                        <h1 className="  hover:A91D3A text-black  py-2 px-4 border border-myRed rounded-full  shadow-md font-bold text-2xl">
+                          {product.name} The Best Carpet
+                        </h1>
+                        <h3 className="font-bold text-xl text-transform: uppercase">
+                          The Best Carpet Gallery In Iran We Produce The Best
+                          Carpets
+                        </h3>
 
-                      <p className="text-center">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Similique harum omnis hic alias ipsum asperiores
-                        id, voluptate magni reprehenderit ipsam qui possimus
-                        recusandae! Fuga nemo natus vel necessitatibus adipisci
-                        velit provident veniam, quas voluptates possimus magnam
-                        error recusandae, deserunt eaque, a eveniet temporibus.
-                        Vel quibusdam ipsa assumenda cum, tempore consectetur
-                        quia autem debitis possimus? Reiciendis perspiciatis
-                        dolorem excepturi a repellat!
-                      </p>
-                      <div className="counterNumber">
-                        <Counter />
+                        <p className="text-center">{product.description}</p>
+                        <div className="counterNumber">
+                          <Counter inStore={product.inStore} />
+                        </div>
+                        <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
+                          Buy This Carpet Now !
+                        </button>
                       </div>
-                      <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
-                        Buy This Carpet Now !
-                      </button>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

@@ -2,9 +2,8 @@
 import React from "react";
 import { useState } from "react";
 
-export const Counter = () => {
+export const Counter = ({ inStore }) => {
   const [currentValue, setCurrentValue] = useState(0);
-  const inStore = 5;
 
   const decreaseNumber = () => {
     currentValue > 0 && setCurrentValue(currentValue - 1);
@@ -14,8 +13,10 @@ export const Counter = () => {
     (currentValue >= 0) & (currentValue < inStore) &&
       setCurrentValue(currentValue + 1);
   };
+
   return (
     <div>
+      {console.log("salam", currentValue)}
       <div className="">
         <form className="max-w-xs mx-auto">
           <label
@@ -52,12 +53,12 @@ export const Counter = () => {
               type="text"
               id="quantity-input"
               data-input-counter
-              defaultValue={currentValue}
               aria-describedby="helper-text-explanation"
               className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder={currentValue}
               required
+              placeholder={currentValue}
             />
+
             <button
               type="button"
               id="increment-button"
