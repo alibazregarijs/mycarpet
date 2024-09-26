@@ -2,9 +2,7 @@
 import React from "react";
 import { useState } from "react";
 
-export const Counter = ({ inStore }) => {
-  const [currentValue, setCurrentValue] = useState(0);
-
+export const Counter = ({ inStore, currentValue, setCurrentValue }) => {
   const decreaseNumber = () => {
     currentValue > 0 && setCurrentValue(currentValue - 1);
   };

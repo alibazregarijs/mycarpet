@@ -1,20 +1,20 @@
 {
   "Products": [
     {
-      "id": "1",
       "name": "Mashahd",
       "price": 15000000,
       "description": "Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing",
-      "inStore": 3,
-      "image": "/assets/images/carpet1.jpg"
+      "inStore": 0,
+      "image": "/assets/images/carpet1.jpg",
+      "id": "1"
     },
     {
-      "id": "2",
       "name": "Ahvaz",
       "price": 11000000,
       "description": "Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing Lorem, ipsum dolor sit amet consectetur adipisicing",
-      "inStore": 5,
-      "image": "/assets/images/carpet2.jpg"
+      "inStore": 4,
+      "image": "/assets/images/carpet2.jpg",
+      "id": "2"
     },
     {
       "id": "3",

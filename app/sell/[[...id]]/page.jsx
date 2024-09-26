@@ -14,7 +14,7 @@ import Image from "next/image";
 import { register } from "swiper/element/bundle";
 import carpet1 from "../../../public/assets/images/carpet1.jpg";
 import { Counter } from "@/components/Counter";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Spinner from "@/components/Spinner";
 register();
 
@@ -27,7 +27,8 @@ const Home = ({ params }) => {
   const [product, setProduct] = useState(true);
   const [loading, setLoading] = useState(true);
   const [currentValue, setCurrentValue] = useState(0);
-  
+
+  const router = useRouter();
   const productId = params.id[0];
   const toggleAnimataion = navToggleContext
     ? "lg:grid hidden col-span-2  row-span-12 min-h-screen  bg-myBlack overflow-y-scroll  hide-scrollbar "
@@ -47,6 +48,45 @@ const Home = ({ params }) => {
     };
     getProduct();
   }, []);
+
+  const buy = async (e) => {
+    e.preventDefault();
+    setSubmiting(true);
+    try {
+      const response = await fetch("api/sell/new", {
+        method: "POST",
+        body: JSON.stringify({
+          userId: session?.user.id,
+          name: product.name,
+          price: product.price * product.meter * product.quantity,
+          description: product.description,
+          quantity: product.quantity,
+          meter: product.meter,
+        }),
+      });
+      if (response.ok) {
+        const response = await fetch(
+          `http://localhost:8000/Products/${productId}`
+        );
+        const data = await response.json();
+        data["inStore"] = data["inStore"] - currentValue;
+
+        const res = await fetch(`http://localhost:8000/Products/${productId}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            name: data["name"],
+            price: data["price"],
+            description: data["description"],
+            inStore: data["inStore"],
+            image: data["image"],
+          }),
+        });
+        router.push("/home");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <AppContext.Provider value={{ navToggleContext, setNavToggleContext }}>
@@ -102,10 +142,18 @@ const Home = ({ params }) => {
 
                         <p className="text-center">{product.description}</p>
                         <div className="counterNumber">
-                          <Counter inStore={product.inStore} />
+                          <Counter
+                            inStore={product.inStore}
+                            currentValue={currentValue}
+                            setCurrentValue={setCurrentValue}
+                          />
                         </div>
-                        <button className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow">
-                          Buy This Carpet Now !
+                        <button
+                          onClick={buy}
+                          disabled={submiting}
+                          className="bg-myRed hover:A91D3A text-white font-semibold py-2 px-4 border border-myRed rounded shadow"
+                        >
+                          {submiting ? `Submiting...` : "Buy This Carpet Now !"}
                         </button>
                       </div>
                     </div>
